@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>LOGIN</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="angular.min.js"></script>
+</head>
+
+<body>
+
+    <div ng-app="signup">
+
+        <form name="myForm">
+            Username
+            <br>
+            <input type="text" name="username" id="user" ng-model="form.username" required />
+            <br>
+            <br> password:
+            <br>
+            <input type="password" name="password" id="pass" ng-model="form.password" required />
+            <br>
+            <br>
+            <button type="submit" id="login" onclick="verify()">LOGIN</button>
+        </form>
+        <br>
+        <br>
+        <span id="span1"></span>
+        <br>
+        <br>
+        <span id="span2"></span>
+
+    </div>
+    <script src="signup.js">
+    </script>
+</body>
+
+</html>

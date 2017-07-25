@@ -1,0 +1,149 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Sign Up</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="angular.min.js"></script>
+</head>
+
+<body>
+    <div ng-app="signup">
+
+        <form name="myForm">
+            <label>Full Name </label>
+            <br>
+            <input name="name" id="name" type="text" maxlength="20" ng-model="form.name" required>
+            <span ng-show="myForm.name.$error.required && myForm.name.$dirty">required</span>
+            <br>
+            <br> Username
+            <br>
+            <input type="text" name="username" id="user" ng-model="form.username" ng-minlength="5" ng-maxlength="20" ng-pattern="/^[A-z][A-z0-9]*$/" required />
+            <span ng-show="myForm.username.$error.required && myForm.username.$dirty">required</span>
+            <span ng-show="!myForm.username.$error.minLength && !myForm.username.$error.maxLength && myForm.username.$error.pattern && myForm.username.$dirty">Must start with a letter, and contain letters &amp; numbers only.</span>
+            <span ng-show="!myForm.username.$error.required && (myForm.username.$error.minlength || myForm.username.$error.maxlength) && myForm.username.$dirty">Username ust be between 5 and 20 characters.</span>
+            <br>
+            <br>
+            <label>E-Mail </label>
+            <br>
+            <input ng-model="form.mail" type="email" name="email" id="email" required>
+            <span ng-show="myForm.email.$error.required && myForm.email.$dirty">required</span>
+            <span ng-show="!myForm.email.$error.required && myForm.email.$error.email && myForm.email.$dirty">invalid email</span>
+            <br />
+            <br>
+            <br>
+            <label><font>Birthday</font></label>
+            <br>
+            <br>
+            <select ng-model="bday" name="Day" required>
+			<option value="">Day</option>
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+			<option value="6">6</option>
+			<option value="7">7</option>
+			<option value="8">8</option>
+			<option value="9">9</option>
+			<option value="10">10</option>
+			<option value="11">11</option>
+			<option value="12">12</option>
+			<option value="13">13</option>
+			<option value="14">14</option>
+			<option value="15">15</option>
+			<option value="16">16</option>
+			<option value="17">17</option>
+			<option value="18">18</option>
+			<option value="19">19</option>
+			<option value="20">20</option>
+			<option value="21">21</option>
+			<option value="22">22</option>
+			<option value="23">23</option>
+			<option value="24">24</option>
+			<option value="25">25</option>
+			<option value="26">26</option>
+			<option value="27">27</option>
+			<option value="28">28</option>
+			<option value="29">29</option>
+			<option value="30">30</option>
+			<option value="31">31</option>
+		</select>
+
+            <select ng-model="bmonth" name="Month" required>
+			<option value="">Month</option>
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+			<option value="6">6</option>
+			<option value="7">7</option>
+			<option value="8">8</option>
+			<option value="9">9</option>
+			<option value="10">10</option>
+			<option value="11">11</option>
+			<option value="12">12</option>
+		</select>
+            <select ng-model="byear" name="Year" required>
+		<option value="">Year</option>
+		<option value="2007">2007</option>
+		<option value="2006">2006</option>
+		<option value="2005">2005</option>
+		<option value="2004">2004</option>
+		<option value="2003">2003</option>
+		<option value="2002">2002</option>
+		<option value="2001">2001</option>
+		<option value="2000">2000</option>
+		<option value="1999">1999</option>
+		<option value="1998">1998</option>
+		<option value="1997">1997</option>
+		<option value="1996">1996</option>
+	    </select>
+            <br>
+            <br>
+            <label> Create Password</label>
+            <br>
+            <input type="password" name="password" id="pass1" ng-model="form.password" ng-minlength="8" ng-maxlength="20" ng-pattern="/(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z])/" required />
+            <span ng-show="myForm.password.$error.required && myForm.password.$dirty">required</span>
+            <span ng-show="!myForm.password.$error.required && (myForm.password.$error.minlength || myForm.password.$error.maxlength) && myForm.password.$dirty">Passwords must be between 8 and 20 characters.</span>
+            <span ng-show="!myForm.password.$error.required && !myForm.password.$error.minlength && !myForm.password.$error.maxlength && myForm.password.$error.pattern && myForm.password.$dirty">Must contain one lower &amp; uppercase letter, and one non-alpha character (a number or a symbol.)</span>
+            <br>
+            <br>
+            <label>Confirm Password</label>
+            <br>
+            <input type="password" name="password2" id="pass2" ng-model="form.password2" ng-pattern="form.password" required />
+            <span ng-show="myForm.password2$error.required && myForm.password2.$dirty">Please confirm your password.</span>
+            <span ng-show="!myForm.password2.$error.required && myForm.password2.$error.noMatch && myForm.password.$dirty">Passwords do not match.</span>
+            <span ng-show="form.password != form.password2">Your passwords must match.</span>
+            <br>
+            <br>
+            <label>Phone Number</label>
+            <br>
+            <input ng-model="form.phone" type="tel" name="phone" id="phone" maxlength="10" ng-pattern="/^[789]\d{9}$/" required>
+            <span ng-show="myForm.phone$error.required && myForm.phone.$dirty">Please Enter Your Number</span>
+            <span ng-show="!myForm.phone.$error.maxLength && myForm.phone.$error.pattern && myForm.phone.$dirty">Invalid Number</span>
+            <br>
+            <br>
+            <label><font>Gender</font></label>
+            <br>
+            <br>
+            <select ng-model="gender" name="gender" required>
+        <option value="">Gender</option>
+		<option value="Male">Male</option>
+		<option value="Female">Female</option>
+        <option value="Other">Other</option>
+        </select>
+            <br>
+            <br>
+            <button type="submit" id="submit" ng-disabled="form.password != form.password2 || form.phone == null || form.name == null || form.username == null || form.mail == null" onclick="insert()">Create User</button>
+        </form>
+
+    </div>
+
+    <script src="signup.js">
+    </script>
+</body>
+
+</html>
